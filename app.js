@@ -6,13 +6,18 @@ function agregarAmigo() {
     if (nombreAmigo === "") {//Si el nombre del amigo está vacío, muestra un mensaje.
         alert("Por favor, ingresa un nombre.");
         return;
+    } 
+    if (nombres.includes(nombreAmigo)) { //Verifica si el nombre ya esta incluido en la lista.
+        alert("Ya has ingresado este nombre.");
+        return;
     }
+
     nombres.push(nombreAmigo)//Agrega el nombre del amigo a la lista.
     document.getElementById("amigo").value = ""//Limpia el cuadro de texto.
 
 
     mostrarLista("listaAmigos", nombres)//Muestra la lista de amigos.
-    cursor()
+    cursor();
 }
 
 
@@ -48,4 +53,4 @@ document.getElementById("amigo").addEventListener("keypress", function(event) {
     }
 });
 
-cursor()
+cursor();
