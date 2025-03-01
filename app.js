@@ -4,9 +4,10 @@ let cantidadMaxAmigos = 10;
 
 function agregarAmigo() {
     let nombreAmigo = document.getElementById("amigo").value //Obtiene el nombre del amigo ingresado.
-    if (nombres.length === cantidadMaxAmigos) {
-        asignarTextoElemento("h2", "Ya no puedes agregar más amigos.") 
-            return;
+    if (nombres.length === cantidadMaxAmigos) { //Verifica si la cantidad de amigos es igual a la cantidad máxima.
+        asignarTextoElemento("h2", "Ya no puedes agregar más amigos.")
+        limpiar("amigo");
+        return;
     } else {
         if (nombreAmigo === "") {//Si el nombre del amigo está vacío, muestra un mensaje.
             alert("Por favor, ingresa un nombre.");
@@ -18,9 +19,8 @@ function agregarAmigo() {
         }
     }
     nombres.push(nombreAmigo)//Agrega el nombre del amigo a la lista.
-    document.getElementById("amigo").value = ""//Limpia el cuadro de texto.
 
-
+    limpiar("amigo"); //Limpia el cuadro de texto.
     mostrarLista("listaAmigos", nombres)//Muestra la lista de amigos.
     cursor();
 }
@@ -28,6 +28,11 @@ function agregarAmigo() {
 function asignarTextoElemento(elemento, texto) { 
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto; 
+}
+
+function limpiar(identificar){//
+    document.getElementById(identificar).value = ""; 
+    document.getElementById(identificar).innerHTML = ""; 
 }
 
 function mostrarLista(lista, elementos) {
@@ -49,7 +54,7 @@ function sortearAmigo() {
     }
     let amigoSecreto = nombres[Math.floor(Math.random() * nombres.length)] //Elige un amigo aleatorio.
     document.getElementById("resultado").innerHTML = `El amigo secreto es: ${amigoSecreto}`
-    document.getElementById("listaAmigos").innerHTML = "";
+    limpiar("listaAmigos");//Limpia la lista de amigos.
 }
 
 function cursor() {
