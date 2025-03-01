@@ -12,6 +12,7 @@ function agregarAmigo() {
 
 
     mostrarLista("listaAmigos", nombres)//Muestra la lista de amigos.
+    cursor()
 }
 
 
@@ -35,5 +36,16 @@ function sortearAmigo() {
     let amigoSecreto = nombres[Math.floor(Math.random() * nombres.length)] //Elige un amigo aleatorio.
     document.getElementById("resultado").innerHTML = `El amigo secreto es: ${amigoSecreto}`
     document.getElementById("listaAmigos").innerHTML = "";
-    
 }
+
+function cursor() {
+    document.getElementById("amigo").focus();
+}
+
+document.getElementById("amigo").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {//Si se presiona la tecla "Enter", llama a la función agregarAmigo
+        agregarAmigo();
+    }
+});
+
+cursor()
