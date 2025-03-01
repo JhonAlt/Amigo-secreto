@@ -1,17 +1,22 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let nombres = []
+let cantidadMaxAmigos = 10;
 
 function agregarAmigo() {
     let nombreAmigo = document.getElementById("amigo").value //Obtiene el nombre del amigo ingresado.
-    if (nombreAmigo === "") {//Si el nombre del amigo está vacío, muestra un mensaje.
-        alert("Por favor, ingresa un nombre.");
-        return;
-    } 
-    if (nombres.includes(nombreAmigo)) { //Verifica si el nombre ya esta incluido en la lista.
-        alert("Ya has ingresado este nombre.");
-        return;
+    if (nombres.length === cantidadMaxAmigos) {
+        asignarTextoElemento("h2", "Ya no puedes agregar más amigos.") 
+            return;
+    } else {
+        if (nombreAmigo === "") {//Si el nombre del amigo está vacío, muestra un mensaje.
+            alert("Por favor, ingresa un nombre.");
+            return;
+        } 
+        if (nombres.includes(nombreAmigo)) { //Verifica si el nombre ya esta incluido en la lista.
+            alert("Ya has ingresado este nombre.");
+            return;
+        }
     }
-
     nombres.push(nombreAmigo)//Agrega el nombre del amigo a la lista.
     document.getElementById("amigo").value = ""//Limpia el cuadro de texto.
 
@@ -20,6 +25,10 @@ function agregarAmigo() {
     cursor();
 }
 
+function asignarTextoElemento(elemento, texto) { 
+    let elementoHTML = document.querySelector(elemento);
+    elementoHTML.innerHTML = texto; 
+}
 
 function mostrarLista(lista, elementos) {
     let mostrarAmigos = document.getElementById(lista); 
