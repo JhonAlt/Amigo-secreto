@@ -5,13 +5,13 @@ function agregarAmigo() {
     let nombreAmigo = document.getElementById("amigo").value //Obtiene el nombre del amigo ingresado.
     if (nombreAmigo === "") {//Si el nombre del amigo está vacío, muestra un mensaje.
         alert("Por favor, ingresa un nombre.");
-        return 
+        return;
     }
     nombres.push(nombreAmigo)//Agrega el nombre del amigo a la lista.
     document.getElementById("amigo").value = ""//Limpia el cuadro de texto.
 
 
-    mostrarLista("listaAmigos", nombres)//Muestra la lista de amigos en el documento.
+    mostrarLista("listaAmigos", nombres)//Muestra la lista de amigos.
 }
 
 
@@ -26,3 +26,14 @@ function mostrarLista(lista, elementos) {
         mostrarAmigos.appendChild(elementoLista);//Agrega el elemento a la lista.
     }
 } 
+
+function sortearAmigo() {
+    if (nombres.length === 0) { //verifica si la lista de amigos está vacía.
+        alert("No agregaste ningún amigo para sortear.");
+        return;
+    }
+    let amigoSecreto = nombres[Math.floor(Math.random() * nombres.length)] //Elige un amigo aleatorio.
+    document.getElementById("resultado").innerHTML = `El amigo secreto es: ${amigoSecreto}`
+    document.getElementById("listaAmigos").innerHTML = "";
+    
+}
