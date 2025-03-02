@@ -52,9 +52,12 @@ function sortearAmigo() {
         alert("No agregaste ningún amigo para sortear.");
         return;
     }
-    let amigoSecreto = nombres[Math.floor(Math.random() * nombres.length)] //Elige un amigo aleatorio.
+    let amigoSecreto = nombres.splice(Math.floor(Math.random() * nombres.length), 1)[0]; //Selecciona un amigo al azar y lo elimina de la lista.
     document.getElementById("resultado").innerHTML = `El amigo secreto es: ${amigoSecreto}`
     limpiar("listaAmigos");//Limpia la lista de amigos.
+    if (nombres.length === 0) {
+        asignarTextoElemento("h2", "Ya no tienes más amigos para sortear.");
+    }
 }
 
 function cursor() {
