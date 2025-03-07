@@ -1,9 +1,10 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let nombres = []
 let cantidadMaxAmigos = 10;
+const regex = /^[a-zA-Z\s]*$/; // Permite solo letras y espacios.
 
 function agregarAmigo() {
-    let nombreAmigo = document.getElementById("amigo").value //Obtiene el nombre del amigo ingresado.
+    let nombreAmigo = document.getElementById("amigo").value; //Obtiene el nombre del amigo ingresado.
     if (nombres.length === cantidadMaxAmigos) { //Verifica si la cantidad de amigos es igual a la cantidad máxima.
         asignarTextoElemento("h2", "Ya no puedes agregar más amigos.")
         limpiar("amigo");
@@ -17,6 +18,12 @@ function agregarAmigo() {
             alert("Ya has ingresado este nombre.");
             return;
         }
+        if (!regex.test(nombreAmigo)) { //Verifica si el nombre del amigo es válido.
+            alert("Por favor, ingresa un nombre válido.");
+            limpiar("amigo");
+            return;
+        }
+        
     }
     nombres.push(nombreAmigo)//Agrega el nombre del amigo a la lista.
 
