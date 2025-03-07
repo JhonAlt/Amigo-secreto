@@ -67,6 +67,16 @@ function sortearAmigo() {
     }
 }
 
+function resetear() {
+    nombres = []
+    limpiar("listaAmigos");
+    asignarTextoElemento("h2", "Digite el nombre de sus amigos")
+    limpiar("amigo");
+    cursor();
+    limpiar("resultado");
+
+}
+
 function cursor() {
     document.getElementById("amigo").focus();
 }
