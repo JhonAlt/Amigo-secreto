@@ -11,15 +11,29 @@ function agregarAmigo() {
         return;
     } else {
         if (nombreAmigo === "") {//Si el nombre del amigo está vacío, muestra un mensaje.
-            alert("Por favor, ingresa un nombre.");
+            Swal.fire({
+                title: 'Campo vacío',
+                text: 'Por favor, ingresa un nombre.',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+            });
             return;
         } 
         if (nombres.includes(nombreAmigo)) { //Verifica si el nombre ya esta incluido en la lista.
-            alert("Ya has ingresado este nombre.");
+            Swal.fire({
+                title: 'Ya has ingresado este nombre.',
+                text: 'Por favor, ingresa un nombre diferente.',
+                icon: 'warning',
+            });
+            limpiar("amigo");
             return;
         }
         if (!regex.test(nombreAmigo)) { //Verifica si el nombre del amigo es válido.
-            alert("Por favor, ingresa un nombre válido.");
+            Swal.fire({
+                title: 'Nombre inválido',
+                text: 'Por favor, ingresa un nombre válido.',
+                icon: 'warning',
+            });
             limpiar("amigo");
             return;
         }
@@ -56,7 +70,12 @@ function mostrarLista(lista, elementos) {
 
 function sortearAmigo() {
     if (nombres.length === 0) { //verifica si la lista de amigos está vacía.
-        alert("No agregaste ningún amigo para sortear.");
+        Swal.fire({
+            title: 'Lista vacía',
+            text: 'Por favor, ingresa al menos dos amigos.',
+            icon: 'warning',
+            confirmButtonText: 'Ok'
+        });
         return;
     }
     let amigoSecreto = nombres.splice(Math.floor(Math.random() * nombres.length), 1)[0]; //Selecciona un amigo al azar y lo elimina de la lista.
