@@ -1,7 +1,7 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 let nombres = []
 let cantidadMaxAmigos = 10;
-const regex = /^[a-zA-Z\s]*$/; // Permite solo letras y espacios.
+const regex = /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑ]*$/; // Permite letras, espacios y acentos.
 
 function agregarAmigo() {
     let nombreAmigo = document.getElementById("amigo").value; //Obtiene el nombre del amigo ingresado.
@@ -19,7 +19,7 @@ function agregarAmigo() {
             });
             return;
         } 
-        if (nombres.includes(nombreAmigo)) { //Verifica si el nombre ya esta incluido en la lista.
+        if (nombres.includes(nombreAmigo)) { //Verifica si el nombre ya está incluido en la lista.
             Swal.fire({
                 title: 'Ya has ingresado este nombre.',
                 text: 'Por favor, ingresa un nombre diferente.',
@@ -89,7 +89,7 @@ function sortearAmigo() {
 function resetear() {
     nombres = []
     limpiar("listaAmigos");
-    asignarTextoElemento("h2", "Digite el nombre de sus amigos")
+    asignarTextoElemento("h2", "AGREGA EL NOMBRE DE TUS AMIGOS")
     limpiar("amigo");
     cursor();
     limpiar("resultado");
