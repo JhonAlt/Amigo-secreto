@@ -64,6 +64,22 @@ function mostrarLista(lista, elementos) {
         const li = document.createElement("li");
         li.textContent = elemento;
         mostrarAmigos.appendChild(li);
+
+       //Genera un color aleatorio para cada amigo.
+       const coloresFondo = ["#FF6969", "#A0C878", "#EB5B00", "#5F99AE", "#FFA725", "#AC1754", "#7886C7", "#FBA518", "#16C47F"];
+       li.style.backgroundColor = coloresFondo[Math.floor(Math.random() * coloresFondo.length)];
+
+        //Crea un botón para eliminar un amigo de la lista.
+       const buttonEliminar = document.createElement("button");
+       buttonEliminar.textContent = "X";
+       buttonEliminar.addEventListener('click', () => {
+           const index = ListaNombres.indexOf(elemento);
+           if (index > -1) {
+               ListaNombres.splice(index, 1);
+               li.remove();
+           }
+       });
+       li.appendChild(buttonEliminar);
    });
 } 
 
@@ -75,7 +91,7 @@ function sortearAmigo() {
     }
     //Selecciona un amigo al azar y lo elimina de la lista.
     const amigoSecreto = ListaNombres.splice(Math.floor(Math.random() * ListaNombres.length), 1)[0];
-    document.getElementById("resultado").innerHTML = `El amigo secreto es: ${amigoSecreto}`
+    document.getElementById("resultado").innerHTML = `Tu amigo secreto es: ${amigoSecreto}`
     limpiar("listaAmigos");//Limpia la lista de amigos.
     if (ListaNombres.length === 0) {
         asignarTextoElemento("h2", "Ya no tienes más amigos para sortear.");

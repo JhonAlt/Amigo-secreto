@@ -130,12 +130,36 @@ ul {
     font-family: "Orbitron", serif;
     font-size: 18px;
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+li button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+li button:hover {
+    background-color: #cc0000;
 }
 
 .result-list {
     margin-top: 15px;
-    color: #02812c;
-    font-size: 22px;
+    color: #E2E2B6;
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
 }
@@ -145,7 +169,7 @@ ul {
     font-family: "Orbitron", serif;
     font-size: 16px;
     color: #C4C4C4;
-    background-color: #31363F;
+    background-color: #304463;
     justify-content: center;
     padding: 10px;
 
@@ -165,7 +189,7 @@ ul {
     width: 275px;
     padding: 1px 56px;
     color: var(--color-white);
-    background-color: #47B09B;
+    background-color: #50B498;
     font-size: 20px;
     justify-content: center;
 }
@@ -175,7 +199,7 @@ ul {
 }
 
 .button-draw:hover {
-    background-color: #3C8778;
+    background-color: #468585;
 }
 
 /* Botón de reinicio*/
@@ -185,7 +209,7 @@ ul {
     width: 275px;
     padding: 1px 40px;
     color: var(--color-white);
-    background-color: #C5345D;
+    background-color: #E82561;
     font-size: 20px;
     justify-content: center;
 }
@@ -195,7 +219,7 @@ ul {
 }
 
 .button-reset:hover {
-    background-color: #9A2B4A;
+    background-color: #C30E59;
 }
 
 @media (max-width: 768px) {
